@@ -1,2 +1,2 @@
-FROM nginx
-COPY . /usr/share/nginx/html
+FROM php:7-apache
+COPY . /var/www/html/
