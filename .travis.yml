@@ -7,7 +7,6 @@ addons:
   apt:
     packages:
       - docker-ce
-      - gcloud
 
 before_install:
   - docker build -t docker_image .
