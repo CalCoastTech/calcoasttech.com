@@ -21,6 +21,7 @@ install:
   - echo $GCLOUD_KEY | base64 --decode > gcloud.json
   - gcloud auth activate-service-account $GCLOUD_EMAIL --key-file gcloud.json
   - docker login -u _json_key --password-stdin https://gcr.io < gcloud.json
+  - rm gcloud.json
 
 
 script:
