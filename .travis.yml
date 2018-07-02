@@ -25,6 +25,7 @@ install:
 
 script:
   - docker build -t gcr.io/calcoasttech/calcoasttech.com .
+  - gcloud docker push gcr.io/calcoasttech/calcoasttech.com
 
 deploy:
   provider: script
