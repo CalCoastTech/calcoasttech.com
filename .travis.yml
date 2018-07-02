@@ -19,13 +19,13 @@ install:
   - gcloud --quiet components update kubectl
   # Auth flow
   - echo $GCLOUD_KEY | base64 --decode > gcloud.json
-  - cat gcloud.json
   - gcloud auth activate-service-account $GCLOUD_EMAIL --key-file gcloud.json
+  - docker login -u _json_key --password-stdin https://gcr.io < gcloud.json
 
 
 script:
   - docker build -t gcr.io/calcoasttech/calcoasttech.com .
-  - gcloud docker push gcr.io/calcoasttech/calcoasttech.com
+  - docker push gcr.io/calcoasttech/calcoasttech.com
 
 deploy:
   provider: script
