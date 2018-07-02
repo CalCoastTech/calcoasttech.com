@@ -27,4 +27,7 @@ script:
   - docker build -t gcr.io/calcoasttech/calcoasttech.com .
 
 deploy:
-  - gcloud docker push gcr.io/calcoasttech/calcoasttech.com > /dev/null
+  provider: script
+  script: gcloud docker push gcr.io/calcoasttech/calcoasttech.com
+  on:
+    branch: master
