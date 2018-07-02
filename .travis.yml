@@ -24,11 +24,11 @@ install:
 
 
 script:
-  - docker build -t gcr.io/calcoasttech/calcoasttech.com .
-  - docker push gcr.io/calcoasttech/calcoasttech.com
+  - docker build -t gcr.io/rightscale-bryankaraffa/calcoasttech.com .
+  - docker push gcr.io/rightscale-bryankaraffa/calcoasttech.com
 
 deploy:
   provider: script
-  script: gcloud docker push gcr.io/calcoasttech/calcoasttech.com
+  script: gcloud docker push gcr.io/rightscale-bryankaraffa/calcoasttech.com
   on:
     branch: master
