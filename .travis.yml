@@ -8,7 +8,10 @@ addons:
     packages:
       - docker-ce
 
-before_install:
+cache:
+  directories:
+    - "$HOME/google-cloud-sdk/"
+install:
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash; fi
   # Add gcloud to $PATH
   - source /home/travis/google-cloud-sdk/path.bash.inc
@@ -19,9 +22,7 @@ before_install:
   - cat gcloud.json
   - gcloud auth activate-service-account $GCLOUD_EMAIL --key-file gcloud.json
 
-cache:
-  directories:
-    - "$HOME/google-cloud-sdk/"
-after_success:
-  - docker build -t gcr.io/$CLOUDSDK_CORE_PROJECT/$CLOUDSDK_CORE_PROJECT .
-  - gcloud docker push gcr.io/$CLOUDSDK_CORE_PROJECT/$CLOUDSDK_CORE_PROJECT > /dev/null
+
+deploy:
+  - docker build -t gcr.io/calcoasttech/calcoasttech.com .
+  - gcloud docker push gcr.io/calcoasttech/calcoasttech.com > /dev/null
