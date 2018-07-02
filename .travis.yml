@@ -29,6 +29,6 @@ script:
 
 deploy:
   provider: script
-  script: gcloud docker push gcr.io/rightscale-bryankaraffa/calcoasttech.com:${TRAVIS_BRANCH}
+  script: docker push gcr.io/rightscale-bryankaraffa/calcoasttech.com:${TRAVIS_BRANCH}
   on:
     all_branches: true
