@@ -23,6 +23,8 @@ install:
   - gcloud auth activate-service-account $GCLOUD_EMAIL --key-file gcloud.json
 
 
-deploy:
+script:
   - docker build -t gcr.io/calcoasttech/calcoasttech.com .
+
+deploy:
   - gcloud docker push gcr.io/calcoasttech/calcoasttech.com > /dev/null
